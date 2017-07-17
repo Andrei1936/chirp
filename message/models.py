@@ -13,7 +13,7 @@ class TimestampModel(models.Model):
 
 class Message(TimestampModel):
     user = models.ForeignKey(User)
-    status = models.TextField(null=True, max_length=140, blank=False)
+    status = models.TextField(null=False, max_length=140, blank=False)
 
 
 
