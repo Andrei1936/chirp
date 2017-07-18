@@ -16,9 +16,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.views.generic.base import TemplateView
+from django.contrib.auth import views as auth_views
+
+from message.views import RegisterView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
-    url(r'^register/', TemplateView.as_view(template_name='register.html'), name='register'),
+    url(r'^register/$', RegisterView.as_view(), name='register'),
+    url(r'^login/$', auth_views.login,{'template_name': 'login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout,{'next_page': 'login.html'}, name='login'),
+
 ]
