@@ -1,3 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="row-container">
+    {% for message in object_list %}
+
+    <div class="row chirp">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>
+                    {% if user == message.user %}
+                    <span class="label label-primary username">@{{ message.user.username }}</span>
+                    {% else %}
+                    <span class="label label-default username">@{{ message.user.username }}</span>
+                    {% endif %}
+                    <small>{{ message.created }}</small>
+                </p>
+                <p>{{ message }}</p>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
 {% endblock %}

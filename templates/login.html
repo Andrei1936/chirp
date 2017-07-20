@@ -1,9 +1,19 @@
-
 {% extends 'base.html' %}
 {% block content %}
 <form method="post" class="register-form">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form.non_field_errors }}
+    <p>
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" autofocus maxlength="254" required id="id_username"/>
+        {{ form.username.errors }}
+    </p>
+    <p>
+        <label for="id_password">Password:</label>
+        <input type="password" name="password" required id="id_password"/>
+        {{ form.password.errors }}
+    </p>
+
     <button type="submit">Login</button>
 </form>
 {% endblock %}

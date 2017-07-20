@@ -1,9 +1,38 @@
-
 {% extends 'base.html' %}
 {% block content %}
 <form method="post" class="register-form">
     {% csrf_token %}
-    {{ form.as_p }}
+    <p>
+        <label for="id_first_name">First name:</label>
+        <input type="text" name="first_name" maxlength="30" id="id_first_name" class="{% if form.first_name.errors %} error-field {% endif %}"/>
+        {{ form.first_name.errors }}
+    </p>
+    <p>
+        <label for="id_last_name">Last name:</label>
+        <input type="text" name="last_name" maxlength="30" id="id_last_name" class="{% if form.last_name.errors %} error-field {% endif %}"/>
+        {{ form.last_name.errors }}
+    </p>
+    <p>
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" maxlength="150" required id="id_username"
+        class="{% if form.username.errors %} error-field {% endif %}"/>
+        {{ form.username.errors }}
+    </p>
+    <p>
+        <label for="id_email">Email address:</label>
+        <input type="email" name="email" maxlength="254" id="id_email" class="{% if form.email.errors %} error-field {% endif %}"/>
+        {{ form.email.errors }}
+    </p>
+    <p>
+        <label for="id_password">Password:</label>
+        <input type="password" name="password" class="password-field" maxlength="128" required id="id_password" class="{% if form.password.errors %} error-field {% endif %}"/>
+        {{ form.password.errors }}
+    </p>
+    <p>
+        <label for="id_retype_password">Retype password:</label>
+        <input type="password" name="retype_password" required id="id_retype_password" class="{% if form.retype_password.errors %} error-field {% endif %}"/>
+        {{ form.retype_password.errors }}
+    </p>
     <button type="submit">Register</button>
 </form>
 {% endblock %}

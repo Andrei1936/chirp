@@ -4,3 +4,19 @@ h2 {
 .register-form {
     margin-top: 200px;
 }
+
+.chirp {
+    .margin: 10px 0;
+}
+
+.username {
+    font-size: 16px;
+}
+
+.row-container {
+margin-top: 100px;
+}
+
+.error-field {
+    border-color: red;
+}
