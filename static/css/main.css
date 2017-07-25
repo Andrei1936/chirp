@@ -1,8 +1,13 @@
 h2 {
     color: red;
 }
-.register-form {
-    margin-top: 200px;
+
+.register-form{
+    margin-top:200px;
+}
+
+.error-field {
+    border-color: red;
 }
 
 .chirp {
@@ -14,9 +19,88 @@ h2 {
 }
 
 .row-container {
-margin-top: 100px;
+    margin-top: 100px;
 }
 
-.error-field {
-    border-color: red;
+.mar {
+    margin-top: -100px;
+}
+
+.marnav {
+    margin-top: 0px;
+    margin-right: 0px;
+}
+
+.lr {
+    margin-top: 8px;
+    margin-right: 18px;
+}
+
+.errorcolor{
+    color: red;
+    font-weight: bold;
+    text-align: left;
+}
+
+.profile-icon {
+    padding: 20px;
+    border: 1px solid #383838;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+body {
+  background-image: url('http://i.imgur.com/Cj1RRYU.jpg') ;
+  background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-position: 0 50px;
+    background-attachment: fixed;
+}
+
+.container[role=main] {
+    margin-top: 75px;
+}
+
+.martop{
+    margin-top: 5px;
+    margin-bottom: -10px;
+}
+
+.marchirp{
+    margin-top: 10px;
+    margin-bottom: -15px;
+}
+
+.a2{
+    color:white;
+    font-weight: bold;
+
+}
+
+.a2:hover {
+    color:white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.bawld{
+    font-weight: bold;
+}
+
+.marleft{
+    margin-right: 10px;
+}
+
+.panel-body  {
+    word-break:break-all
+}
+
+.ac{
+    color:white;
+    font-weight: bold;
 }
