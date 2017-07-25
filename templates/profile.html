@@ -6,12 +6,15 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <span class="glyphicon glyphicon-user profile-icon" aria-hidden="true"></span><br>
-                <span class="bawld"><a href = {% url 'my-profile' %}>@{{ object.username }}</span></a><br>
+                <span class="bawld"><a href = {% url 'my-profile' %}/>@{{ object.username }}</span></a><br>
                 <span class="bawld">{{ object.first_name }} {{ object.last_name }}</span><br>
                 <span class="marleft">{{ object.email }}</span><br>
                 {% if request.user != object %}
                     {% if object in following %}
-                        <button type="submit" class="btn btn-primary">Unfollow</button>
+                       <form method="post" action="{% url 'unfollow_user' object.username %}">
+                            {% csrf_token %}
+                                <button type="submit" class="btn btn-primary">Unfollow</button>
+                        </form>
                     {% else %}
                         <form method="post" action="{% url 'follow_user' object.username %}">
                             {% csrf_token %}

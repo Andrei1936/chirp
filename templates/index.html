@@ -1,14 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-
     <p style="text-align:center"><img src="http://i.imgur.com/nnkZmO3.png" /></p>
+
+    {% if request.user.is_authenticated %}
+        <form method="post" action="{% url 'chirp' %} object.username">
+            {% csrf_token %}
+            <input type="hidden" name="user" value="{{ request.user.id }}">
+            <label for="id_status">Status:</label>
+            <input type="text" name="status" maxlength="140" id="id_status" claa="{% if from.status.errors %} error-field{% endif %}"/>
+        {{ form.status.errors }}
+            <button type="submit" class="btn btn-primary">Chirp</button>
+        </form>
+    {% endif %}
 
     {% for message in object_list %}
         <div class=" col-sm-12">
             <div class="row chirp marchirp">
-
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <p>
