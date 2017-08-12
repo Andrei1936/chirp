@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <div class="row">
 
     <div class="col-xs-12 col-sm-12 col-md-3">
         <div class="panel panel-default">
             <div class="panel-body">
                 <span class="glyphicon glyphicon-user profile-icon" aria-hidden="true"></span><br>
-                <span class="bawld"><a href = {% url 'my-profile' %}/>@{{ object.username }}</span></a><br>
+                <span class="bawld"><a href = {% url 'my-profile' %}>@{{ object.username }}</a></span><br>
                 <span class="bawld">{{ object.first_name }} {{ object.last_name }}</span><br>
                 <span class="marleft">{{ object.email }}</span><br>
                 {% if request.user != object %}
                     {% if object in following %}
-                       <form method="post" action="{% url 'unfollow_user' object.username %}">
+                        <form method="post" action="{% url 'unfollow_user' object.username %}">
                             {% csrf_token %}
                                 <button type="submit" class="btn btn-primary">Unfollow</button>
                         </form>
@@ -31,41 +32,53 @@
                     {% for message in messages %}
                     <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
                     {% endfor %}
-                </ul>
+                </p>
             </div>
         {% endif %}
 
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-9">
+    <div class="col-xs-12 col-sm-12 col-md-9" id="tabs">
         <ul class="nav nav1 nav-tabs">
-            <li role="presentation" class="active"><a href="#">Chirps</a></li>
-            <li role="presentation"><a href="#">Following</a></li>
-            <li role="presentation"><a href="#">Followers</a></li>
-            <li role="presentation"><a href="#">Chirp</a></li>
+            <li role="presentation" class="active"><a href="#chirps-tab" data-toggle="tab">Chirps</a></li>
+            <li role="presentation"><a href="#following-tab" data-toggle="tab">Following</a></li>
+            <li role="presentation"><a href="#followers-tab" data-toggle="tab">Followers</a></li>
         </ul>
+            <div class="tab-content">
 
-        {% for message in chirps %}
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="row chirp martop">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <p>
-                                {% if user == message.user %}
-                                    <span class="label label-primary username"><a class="a2" href = {% url 'my-profile' %}>@{{ message.user.username }}</a></span>
-                                {% else %}
-                                    <span class="label label-default username"><a class="a2" href = {% url 'my-profile' %}>@{{ message.user.username }}</a></span>
-                                {% endif %}
-                                <small>{{ message.created }}</small>
-                            </p>
-                            <p>{{ message }}</p>
+                <div class="tab-pane active" id="chirps-tab">
+                 {% for message in chirps %}
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="row chirp martop">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <p>
+                                            {% if user == message.user %}
+                                                <span class="label label-primary username"><a class="a2" href = {% url 'my-profile' %}>@{{ message.user.username }}</a></span>
+                                            {% else %}
+                                                <span class="label label-default username"><a class="a2" href = {% url 'my-profile' %}>@{{ message.user.username }}</a></span>
+                                            {% endif %}
+                                            <small>{{ message.created }}</small>
+                                        </p>
+                                        <p>{{ message }}</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
-            </div>
-        {% endfor %}
 
+                <div class="tab-pane active" id="following-tab">
+                    <!-- ¯\_(ツ)_/¯ -->
+                </div>
+
+                <div class="tab-pane active" id="followers-tab">
+                    <!-- ¯\_(ツ)_/¯ -->
+                </div>
+
+            </div>
     </div>
 
-</div>
 {% endblock %}
+
+</div>

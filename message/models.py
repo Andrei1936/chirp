@@ -14,6 +14,14 @@ class Message(TimestampModel):
     def __str__(self):
         return self.status
 
+    @property
+    def like_users(self):
+        return [l.user for l in self.like_set.all() if l.like]
+
+    @property
+    def dislike_users(self):
+        return [l.user for l in self.like_set.all() if not l.like]
+
 class Like(TimestampModel):
     user = models.ForeignKey(User)
     message =models.ForeignKey(Message)

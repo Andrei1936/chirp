@@ -30,7 +30,6 @@ class RegisterForm(forms.ModelForm):
             new_user.save()
         return new_user
 
-
 class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
